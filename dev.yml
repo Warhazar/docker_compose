@@ -1,0 +1,7 @@
+FROM tomcat:latest
+EXPOSE 8080
+RUN apt-get -y update
+RUN apt install -y maven git && \
+  git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git /home/boxfuse
+WORKDIR /home/boxfuse
+RUN mvn package && cp target/hello-1.0.war /usr/local/tomcat/webapps/
