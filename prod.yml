@@ -1,5 +1,5 @@
 FROM alpine:3.7
-RUN 
+RUN apt install -y tomcat8 
 
 EXPOSE 8080
 CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
