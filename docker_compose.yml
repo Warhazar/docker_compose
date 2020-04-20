@@ -1,0 +1,22 @@
+---
+version: '2'
+services:
+  build_boxfuse:
+    volumes:
+      - boxfuse:/usr/local/tomcat/webapps
+    build:
+      context: .
+      dockerfile: dev
+  prod_boxfuse:
+    volumes:
+      - boxfuse:/opt/tomcat/webapps
+    build:
+      context: .
+      dockerfile: prod
+      ports:
+        - "8080:8080"
+  command: "/opt/tomcat/bin/catalina.sh run"
+
+volumes:
+  boxfuse:
+---
