@@ -1,6 +1,8 @@
 FROM alpine:3.7
-RUN apk update
-RUN apk add tomcat8 
 
-EXPOSE 8080
+RUN apk add openjdk8 curl && \
+  curl -o /usr/local/tomcat.tar.gz http://mirror.linux-ia64.org/apache/tomcat/tomcat-8/v8.5.54/bin/apache-tomcat-8.5.54.tar.gz && \
+  tar xzvf /usr/local/tomcat.tar.gz -C /usr/local && \
+  mv /usr/local/apache-tomcat-8.5.54 /usr/local/tomcat
+
 CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
