@@ -1,5 +1,4 @@
 FROM tomcat:latest
-EXPOSE 8080
 RUN apt-get -y update
 RUN apt install -y maven git && \
   git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello.git /home/boxfuse
